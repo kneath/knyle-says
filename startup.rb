@@ -1,0 +1,2 @@
+require 'launchpad/device'
+
