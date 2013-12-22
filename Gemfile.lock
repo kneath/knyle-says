@@ -5,9 +5,11 @@ GEM
       ffi
       portmidi (>= 0.0.6)
     portmidi (0.0.6)
+    rake (10.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   launchpad (~> 0.3.0)
+  rake
