@@ -9,6 +9,9 @@ module Game
       @device.reset
 
       @sequence = []
+      @on = true
+
+      start
     end
 
     # Just a little example light show.
@@ -18,20 +21,26 @@ module Game
 
     # Start the game!
     def start
-      @sequence = (1..6).collect { Random.rand(1..4) }
+      @level ||= 0
+      @level += 1
+
+      @device.reset
+
+      @sequence = (1..@level*2).collect { Random.rand(1..4) }
       display(@sequence)
+      sleep 0.5
 
       @interaction.response_to(:grid, :down) do |interaction, action|
         handle_press which_quadrant(action[:x], action[:y])
       end
       @interaction.start
-      sleep 0.5
     end
 
     # Display a little light show
     def display(arr=[])
       arr.each do |quad|
         @device.reset
+        sleep 0.25
         light_up(quad)
         delay
       end
@@ -73,10 +82,12 @@ module Game
       light_up(quad)
 
       if @sequence.shift != quad
+        @interaction.no_response_to [:grid], :both
         display_loss
       end
 
       if @sequence.empty?
+        @interaction.no_response_to [:grid], :both
         display_win
       end
     end
@@ -88,6 +99,8 @@ module Game
         end
       end
       @device.flashing_auto
+      sleep 5
+      exit
     end
 
     def display_win
@@ -97,6 +110,8 @@ module Game
         end
       end
       @device.flashing_auto
+      sleep 3
+      start
     end
 
     def which_quadrant(x, y)
