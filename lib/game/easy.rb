@@ -99,6 +99,8 @@ module Game
         end
       end
       @device.flashing_auto
+      sleep 3
+      display_score(@level - 1)
       sleep 5
       Game::Intro.new
     end
@@ -112,6 +114,20 @@ module Game
       @device.flashing_auto
       sleep 3
       start
+    end
+
+    def display_score(score)
+      x = 0
+      y = 0
+      while score > 0
+        if (x > 7)
+          x = 0
+          y += 1
+        end
+        @device.change :grid, :x => x, :y => y, :red => :off, :green => :high
+        score -= 1
+        x += 1
+      end
     end
 
     def which_quadrant(x, y)
