@@ -1,6 +1,6 @@
 # Knyle Says
 
-A Simon Says inspired game for the Novation Launchpad.
+A Simon Says inspired game for the Novation Launchpad built on top of the [launchpad gem](https://github.com/thomasjachmann/launchpad).
 
 ## To Play
 
@@ -11,4 +11,6 @@ bundle install
 bundle exec rake start
 ```
 
-And you're off!
+## Demo
+
+<http://www.youtube.com/watch?v=fmIltxIIiTg>
