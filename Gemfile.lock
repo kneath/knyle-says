@@ -1,0 +1,13 @@
+GEM
+  specs:
+    ffi (1.9.3)
+    launchpad (0.3.0)
+      ffi
+      portmidi (>= 0.0.6)
+    portmidi (0.0.6)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  launchpad (~> 0.3.0)
