@@ -3,7 +3,7 @@ module Game
   class Easy
 
     def initialize
-      @interaction = Launchpad::Interaction.new
+      @interaction = Game.interaction
       @device = @interaction.device
       sleep 1.0
       @device.reset
@@ -100,7 +100,7 @@ module Game
       end
       @device.flashing_auto
       sleep 5
-      exit
+      Game::Intro.new
     end
 
     def display_win
