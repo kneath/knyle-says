@@ -1,5 +1,4 @@
 require 'launchpad'
-require 'launchpad/device'
 
 delay = 0.075
 
@@ -32,7 +31,7 @@ end
 end
 
 # HI
-
+sleep 0.5
 device.change :grid, :x => 0, :y => 1, :green => :high, :red => :high
 device.change :grid, :x => 0, :y => 2, :green => :high, :red => :high
 device.change :grid, :x => 0, :y => 3, :green => :high, :red => :high
@@ -51,6 +50,7 @@ device.change :grid, :x => 6, :y => 3, :green => :high, :red => :high
 device.change :grid, :x => 7, :y => 3, :green => :high, :red => :high
 
 # Start Square
+sleep 0.5
 device.flashing_auto
 device.change :grid, :x => 2, :y => 5, :green => :high, :mode => :flashing
 device.change :grid, :x => 3, :y => 5, :green => :high, :mode => :flashing
