@@ -72,8 +72,6 @@ module Game
       @device.reset
       light_up(quad)
 
-      puts @sequence.inspect
-
       if @sequence.shift != quad
         display_loss
       end
@@ -84,7 +82,6 @@ module Game
     end
 
     def display_loss
-      puts "LOST"
       (0..7).each do |x_index|
         (0..7).each do |y_index|
           @device.change :grid, :x => x_index, :y => y_index, :red => :high, :green => :off, :mode => :flashing
@@ -94,13 +91,12 @@ module Game
     end
 
     def display_win
-      puts "WIN"
-      # (0..7).each do |x_index|
-      #   (0..7).each do |y_index|
-      #     @device.change :grid, :x => x_index, :y => y_index, :red => :off, :green => :high, :mode => :flashing
-      #   end
-      # end
-      # @device.flashing_on
+      (0..7).each do |x_index|
+        (0..7).each do |y_index|
+          @device.change :grid, :x => x_index, :y => y_index, :red => :off, :green => :high, :mode => :flashing
+        end
+      end
+      @device.flashing_auto
     end
 
     def which_quadrant(x, y)
